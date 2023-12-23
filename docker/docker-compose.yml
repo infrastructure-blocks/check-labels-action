@@ -1,0 +1,7 @@
+services:
+  action:
+    image: public.ecr.aws/infrastructure-blocks/check-labels-action:latest
+    build:
+      context: ../
+      dockerfile: docker/action/Dockerfile
+    container_name: check-labels-action
