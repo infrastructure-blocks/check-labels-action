@@ -46,7 +46,7 @@
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.1",
     "@infra-blocks/checks": "^0.1.2",
-    "@infra-blocks/github": "^0.2.0",
+    "@infra-blocks/github": "^0.7.0",
     "verror": "^1.10.1"
   }
 }
