@@ -12,12 +12,12 @@ import VError from "verror";
 async function main() {
   core.debug(`received env: ${JSON.stringify(process.env, null, 2)}`);
   core.debug(`received context: ${JSON.stringify(context, null, 2)}`);
+  // TODO: take PR as input and remove this guard.
   checkSupportedEvent(context.eventName, [Event.PullRequest]);
-  // TODO: trim in lib.
   const inputs = getInputs({
-    "one-of": arrayInput({ separator: "," }),
+    "one-of": arrayInput({ separator: ",", trim: true }),
   });
-  const oneOf = inputs["one-of"].map((label) => new RegExp(label.trim()));
+  const oneOf = inputs["one-of"].map((label) => new RegExp(label));
   const handler = createHandler({
     context,
     config: {

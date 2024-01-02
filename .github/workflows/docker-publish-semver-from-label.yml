@@ -1,0 +1,28 @@
+name: Docker Publish Semver From Label
+
+on:
+  push:
+    # This turns off running for tags. Tags are being pushed by the CI upon merges (possibly).
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - labeled
+      - unlabeled
+      - closed
+
+jobs:
+  docker-publish-semver-from-label:
+    uses: infrastructure-blocks/docker-publish-semver-from-label-workflow/.github/workflows/docker-publish-semver-from-label.yml@feature/first-implementation
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: read
+    with:
+      aws-region: us-east-1
+      aws-role: ${{ vars.AWS_ROLE }}
